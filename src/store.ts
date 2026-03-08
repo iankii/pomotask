@@ -38,101 +38,11 @@ const defaultTeamMembers: TeamMember[] = [
   { id: generateId(), name: 'Carol White', avatarColor: '#f59e0b' },
 ];
 
-// Seeded tasks: 2 per Eisenhower quadrant (To Do / list '1')
-// plus 2 tasks for each other list ('2' - In Progress, '3' - Done).
-const seededTasks: Task[] = (() => {
-  const tasks: Task[] = [];
-  const today = new Date();
-  const formatDate = (d: Date) => d.toISOString().split('T')[0];
+// Start with no seeded tasks for a clean deployment
+const seededTasks: Task[] = [];
 
-  const quadrants: Task['matrixQuadrant'][] = [
-    'urgent-important',
-    'important-not-urgent',
-    'urgent-not-important',
-    'not-urgent-not-important',
-  ];
-
-  quadrants.forEach((q) => {
-    const qText = String(q ?? '').replace(/-/g, ' ');
-    for (let i = 1; i <= 2; i++) {
-      tasks.push({
-        id: generateId(),
-        title: `${qText} task ${i}`,
-        description: `Sample ${String(q ?? '')} task ${i}`,
-        listId: '1',
-        priority: i === 1 ? 'urgent' : 'high',
-        matrixQuadrant: q,
-        labels: i === 1 ? [defaultLabels[0].id] : [defaultLabels[1].id],
-        dueDate: formatDate(new Date(today.getTime() + i * 24 * 60 * 60 * 1000)),
-        sprint: 'current',
-        completed: false,
-        createdAt: new Date().toISOString(),
-        pomodoroCount: 0,
-        estimatedPomodoros: 1 + i,
-      });
-    }
-  });
-
-  // Two tasks for In Progress (list '2')
-  for (let i = 1; i <= 2; i++) {
-    tasks.push({
-      id: generateId(),
-      title: `In Progress task ${i}`,
-      description: `Sample in-progress task ${i}`,
-      listId: '2',
-      priority: i === 1 ? 'high' : 'medium',
-      labels: i === 1 ? [defaultLabels[2].id] : [],
-      sprint: 'current',
-      completed: false,
-      createdAt: new Date().toISOString(),
-      pomodoroCount: 0,
-      estimatedPomodoros: 2,
-    });
-  }
-
-  // Two tasks for Done (list '3')
-  for (let i = 1; i <= 2; i++) {
-    tasks.push({
-      id: generateId(),
-      title: `Done task ${i}`,
-      description: `Sample done task ${i}`,
-      listId: '3',
-      priority: 'low',
-      labels: [],
-      sprint: 'current',
-      completed: true,
-      createdAt: new Date().toISOString(),
-      pomodoroCount: 1,
-      estimatedPomodoros: 1,
-    });
-  }
-
-  return tasks;
-})();
-
-// Seeded team tasks: 2 per team member
-const seededTeamTasks = (() => {
-  const teamTasks: any[] = [];
-  if (!defaultTeamMembers || defaultTeamMembers.length === 0) return teamTasks;
-  defaultTeamMembers.forEach((m) => {
-    for (let i = 1; i <= 2; i++) {
-      teamTasks.push({
-        id: generateId(),
-        title: `Team task for ${m.name} ${i}`,
-        description: `Sample team task ${i} assigned to ${m.name}`,
-        mrDetails: '',
-        openQuestions: '',
-        jiraTask: `JIRA-${Math.floor(Math.random() * 9000) + 1000}`,
-        status: i === 1 ? 'in-progress' : 'not-started',
-        assignedTo: m.id,
-        needsMyAttention: i === 2,
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-      });
-    }
-  });
-  return teamTasks;
-})();
+// No seeded team tasks on first deploy
+const seededTeamTasks: TeamTask[] = [];
 
 interface StoreState extends AppState {
   // Task actions
