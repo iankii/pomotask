@@ -13,7 +13,8 @@ const defaultSettings: AppSettings = {
   longBreakLength: 15,
   autoStartBreaks: false,
   autoStartPomodoros: false,
-  notificationsEnabled: true,
+  notificationsEnabled: false,
+  pipEnabled: false,
 };
 
 const defaultLists: List[] = [
@@ -88,6 +89,9 @@ interface StoreState extends AppState {
   setActivePomodoro: (pomodoro: ActivePomodoro | null) => void;
   updateActivePomodoro: (updates: Partial<ActivePomodoro>) => void;
   clearActivePomodoro: () => void;
+  /** Incrementing this flag tells PomodoroTimer to restart with prevDuration from activePomodoro */
+  restartPomodoroFlag: number;
+  triggerPomodoroRestart: () => void;
 
   // Settings actions
   updateSettings: (updates: Partial<AppSettings>) => void;
@@ -128,6 +132,7 @@ export const useStore = create<StoreState>((set, get) => {
     timeEntries: [],
     pomodoroSessions: [],
     activePomodoro: null,
+    restartPomodoroFlag: 0,
     settings: defaultSettings,
     fileHandle: null,
 
@@ -407,6 +412,9 @@ export const useStore = create<StoreState>((set, get) => {
     clearActivePomodoro: () => {
       set(() => ({ activePomodoro: null }));
     },
+    triggerPomodoroRestart: () => {
+      set((state) => ({ restartPomodoroFlag: state.restartPomodoroFlag + 1 }));
+    },
 
     // Settings actions
     updateSettings: (updates) => {
@@ -559,6 +567,9 @@ export const useStore = create<StoreState>((set, get) => {
             timeEntries: parsed.timeEntries || [],
             pomodoroSessions: parsed.pomodoroSessions || [],
             settings: { ...defaultSettings, ...parsed.settings },
+            // Never restore a running timer — always start fresh on page load
+            activePomodoro: null,
+            restartPomodoroFlag: 0,
           });
         }
       } catch (error) {

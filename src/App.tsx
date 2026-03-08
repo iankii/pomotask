@@ -15,7 +15,13 @@ import './App.css';
 function App() {
   const [activeView, setActiveView] = useState('board');
   const [showPomodoroModal, setShowPomodoroModal] = useState(false);
-  const { initializeStore } = useStore();
+  const { initializeStore, triggerPomodoroRestart } = useStore();
+
+  const handleFloatingRestart = () => {
+    triggerPomodoroRestart();
+    // Open the modal so the user can see the restarted timer
+    setShowPomodoroModal(true);
+  };
 
   useEffect(() => {
     initializeStore();
@@ -33,16 +39,22 @@ function App() {
         {activeView === 'time-log' && <TimeLog />}
       </main>
 
-      <PomodoroFloatingButton onOpen={() => setShowPomodoroModal(true)} />
+      <PomodoroFloatingButton
+        onOpen={() => setShowPomodoroModal(true)}
+        onRestart={handleFloatingRestart}
+      />
 
       <div style={{
         position: 'fixed',
         inset: 0,
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        zIndex: 1000,
+        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+        zIndex: 1500,
         display: showPomodoroModal ? 'flex' : 'none',
-        alignItems: 'center',
+        alignItems: 'flex-start',
         justifyContent: 'center',
+        paddingTop: '72px',
+        paddingBottom: '24px',
+        overflowY: 'auto',
       }}
       onClick={(e: React.MouseEvent<HTMLDivElement>) => {
         // Close only if clicking on the overlay background, not the modal content

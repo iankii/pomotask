@@ -85,6 +85,8 @@ export interface ActivePomodoro {
   timeLeft: number; // seconds
   isRunning: boolean;
   startTime: number; // timestamp
+  completed?: boolean;       // true right after the timer reaches 0
+  prevDuration?: number;     // the duration (seconds) that just finished, used for restart
 }
 
 // Settings
@@ -96,6 +98,7 @@ export interface AppSettings {
   autoStartBreaks: boolean;
   autoStartPomodoros: boolean;
   notificationsEnabled: boolean;
+  pipEnabled: boolean; // Picture-in-Picture for timer
 }
 
 export interface AppState {

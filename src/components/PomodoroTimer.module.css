@@ -47,6 +47,18 @@
   transition: all 0.2s ease;
 }
 
+/* Ensure icon and text are vertically centered and have consistent spacing */
+.modeBtn svg {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 0; /* avoid svg descender affecting baseline */
+}
+
+.modeBtn > *:not(svg) {
+  display: inline-flex;
+  align-items: center;
+}
+
 .modeBtn:hover:not(:disabled) {
   border-color: #ff6b35;
   color: #ff6b35;
@@ -166,6 +178,13 @@
   transition: stroke-dashoffset 1s linear;
 }
 
+/* visual indicator when user triggers alert on completed timer */
+.greenPulse {
+  stroke: #10b981 !important;
+  filter: drop-shadow(0 6px 14px rgba(16,185,129,0.25));
+  transition: stroke 200ms ease;
+}
+
 .timerContent {
   position: absolute;
   top: 50%;
@@ -247,6 +266,50 @@
   background: rgba(59, 130, 246, 0.1);
   border-color: #ff6b35;
   color: #ff6b35;
+}
+
+/* Active PiP button glow */
+.pipActive {
+  border-color: #10b981 !important;
+  color: #10b981 !important;
+  background: rgba(16, 185, 129, 0.12) !important;
+}
+
+/* Picture-in-Picture toggle row */
+.pipToggleRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.75rem 0 0.25rem;
+  padding: 0.6rem 1.25rem;
+  background: linear-gradient(135deg, rgba(139,92,246,0.08) 0%, rgba(109,40,217,0.12) 100%);
+  border: 1px solid rgba(139,92,246,0.2);
+  border-radius: 12px;
+}
+
+.pipToggleLabel {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #94a3b8;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  user-select: none;
+}
+
+.pipLiveBadge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #10b981;
+  margin-left: 6px;
+  animation: livePulse 1.4s ease-in-out infinite;
+  letter-spacing: 0.04em;
+}
+
+@keyframes livePulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
 }
 
 .statsSection {
