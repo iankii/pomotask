@@ -1,0 +1,205 @@
+.card {
+  background: var(--bg-card);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  user-select: none;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--status-todo);
+  position: relative;
+}
+
+.card:last-child {
+  border-bottom: none;
+}
+
+.card:hover {
+  background-color: var(--bg-tertiary);
+  border-color: var(--border-light);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.1);
+}
+
+.card.completed {
+  border-left-color: var(--status-done);
+}
+
+.card.urgent {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.borderLeft {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 0.75rem 0 0 0.75rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.dragHandle {
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+.dragHandle:hover {
+  color: var(--text-secondary);
+  background-color: var(--bg-hover);
+}
+
+.dragHandle:active {
+  cursor: grabbing;
+}
+
+.checkbox {
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.checkbox:hover {
+  color: var(--primary);
+}
+
+.title {
+  flex: 1;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* priorityChip replaced with MUI Chip styles - keep spacing rules below */
+
+/* Removed strike-through for completed tasks to keep UI simple */
+
+.actions {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.actionBtn {
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+.actionBtn:hover {
+  background-color: var(--bg-hover);
+  color: var(--primary);
+}
+
+.actionBtn.delete:hover {
+  color: var(--danger);
+}
+
+.description {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  line-height: 1.4;
+}
+
+.labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.label {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  background-color: var(--bg-hover);
+}
+
+/* labels now use MUI Chips; keep container layout */
+
+.footer {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.assigned {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.assignedAvatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.assignedName {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sprintBadge,
+.dueDate,
+.pomodoros {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  background-color: var(--bg-hover);
+  color: var(--text-secondary);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sprintBadge:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+.dueDate {
+  cursor: default;
+}
+
+.pomodoros {
+  cursor: default;
+}

@@ -1,0 +1,195 @@
+.floatingButton {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 0;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.watchCircle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  flex-shrink: 0;
+}
+
+.floatingButton:hover .watchCircle {
+  transform: scale(1.12) translateY(-4px);
+  box-shadow: 0 16px 40px rgba(139, 92, 246, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.15);
+}
+
+.floatingButton:active .watchCircle {
+  transform: scale(0.92);
+}
+
+.timerBox {
+  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.3), inset 0 0 15px rgba(255, 255, 255, 0.08);
+  animation: slideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.time {
+  font-weight: 800;
+  font-size: 1.25rem;
+  font-family: 'Monaco', 'Courier New', monospace;
+  letter-spacing: 0.08em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+.badge {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.9rem;
+  border: 3px solid #0a0a0a;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+  animation: badgePulse 2s infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes dance {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  10% {
+    transform: scale(1.1) rotate(-5deg);
+  }
+  20% {
+    transform: scale(1.1) rotate(5deg);
+  }
+  30% {
+    transform: scale(1.1) rotate(-5deg);
+  }
+  40% {
+    transform: scale(1.1) rotate(5deg);
+  }
+  50% {
+    transform: scale(1.15) rotate(0deg);
+  }
+  60% {
+    transform: scale(1.1) rotate(-3deg);
+  }
+  70% {
+    transform: scale(1.1) rotate(3deg);
+  }
+  80% {
+    transform: scale(1.1) rotate(-3deg);
+  }
+  90% {
+    transform: scale(1.1) rotate(3deg);
+  }
+}
+
+@keyframes ringPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7), inset 0 0 20px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 0 20px rgba(139, 92, 246, 0), inset 0 0 20px rgba(255, 255, 255, 0.15);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0), inset 0 0 20px rgba(255, 255, 255, 0.1);
+  }
+}
+
+.floatingButton.celebrating {
+  animation: dance 1s ease-in-out, ringPulse 1.5s ease-out;
+}
+
+.floatingButton.celebrating .watchCircle {
+  animation: dance 1s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .floatingButton {
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .watchCircle {
+    width: 60px;
+    height: 60px;
+  }
+
+  .watchCircle svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .timerBox {
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+  }
+
+  .time {
+    font-size: 1.1rem;
+  }
+
+  .badge {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+  }
+
+  .floatingButton:hover .watchCircle {
+    transform: scale(1.08) translateY(-2px);
+  }
+}
+

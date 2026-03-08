@@ -1,0 +1,220 @@
+:root {
+  /* Primary CTA Color - Vibrant Orange */
+  --primary: #ff6b35;
+  --primary-dark: #ff5722;
+  --primary-light: #ff8c42;
+  --accent: #ff6b35;
+  --accent-light: #ffb366;
+
+  /* Status/Task State Colors - Clear & Distinct */
+  --status-todo: #7b8cff;        /* Soft Blue - For TODO tasks */
+  --status-in-progress: #00d9ff; /* Cyan - In Progress */
+  --status-review: #ffa500;      /* Orange - Under Review */
+  --status-done: #10b981;        /* Green - Completed */
+  
+  /* Priority Colors - High Contrast */
+  --priority-urgent: #ff3838;    /* Bright Red - Urgent */
+  --priority-high: #ff6b6b;      /* Red - High */
+  --priority-medium: #ffa500;    /* Orange - Medium */
+  --priority-low: #4ade80;       /* Green - Low */
+
+  /* Attention/Alert Colors */
+  --needs-attention: #ff6b6b;    /* Red - Needs My Attention */
+  --completed: #10b981;          /* Green - Done */
+  --warning: #f59e0b;            /* Amber - Warning */
+  --success: #10b981;            /* Green - Success */
+  --info: #06b6d4;               /* Cyan - Info */
+  --danger: #ef4444;             /* Red - Danger */
+
+  /* Backgrounds - Pitch Black with Better Contrast */
+  --bg-primary: #0a0a0a;         /* Pure Black */
+  --bg-secondary: #1a1a1a;       /* Dark Gray 1 */
+  --bg-tertiary: #2d2d2d;        /* Dark Gray 2 */
+  --bg-hover: #3a3a3a;           /* Dark Gray 3 */
+  --bg-card: #141414;            /* Card Background */
+  --bg-input: #0f0f0f;           /* Input Background */
+
+  /* Text - High Contrast */
+  --text-primary: #ffffff;       /* White */
+  --text-secondary: #e0e0e0;     /* Light Gray */
+  --text-tertiary: #a0a0a0;      /* Medium Gray */
+  --text-muted: #707070;         /* Dark Gray */
+
+  /* Borders & Accents */
+  --border: #2d2d2d;             /* Dark Border */
+  --border-light: #3a3a3a;       /* Light Border */
+  --border-focus: #ff6b35;       /* Orange Focus */
+  --border-subtle: #1f1f1f;      /* Subtle Border */
+
+  /* Shadows - Depth */
+  --shadow: rgba(0, 0, 0, 0.6);
+  --shadow-lg: rgba(0, 0, 0, 0.8);
+  --shadow-xl: rgba(0, 0, 0, 0.95);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-light);
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s ease;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+input[type='text'],
+input[type='date'],
+input[type='time'],
+input[type='number'],
+select,
+textarea {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+input[type='text']:focus,
+input[type='date']:focus,
+input[type='time']:focus,
+input[type='number']:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--border-focus);
+  background-color: var(--bg-tertiary);
+}
+
+input::placeholder {
+  color: var(--text-muted);
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--primary);
+}

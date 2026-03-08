@@ -1,0 +1,582 @@
+.container {
+  padding: 2rem;
+  max-width: none;
+  width: 100%;
+}
+
+.header {
+  margin-bottom: 3rem;
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.header p {
+  color: #a0a0a0;
+  font-size: 1.1rem;
+}
+
+.addMemberSection {
+  background: #1a1a1a;
+  border: 1px solid #2d2d2d;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+
+.addMemberSection h2 {
+  color: #e0e0e0;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.addForm {
+  display: flex;
+  gap: 1rem;
+}
+
+.addForm input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background: #0a0a0a;
+  border: 1px solid #2d2d2d;
+  border-radius: 0.5rem;
+  color: #ffffff;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.addForm input:focus {
+  outline: none;
+  border-color: #ff6b6b;
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.15);
+}
+
+.addForm input::placeholder {
+  color: #707070;
+}
+
+.addBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #ff6b35 0%, #ff5722 100%);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.addBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(255, 107, 53, 0.4);
+}
+
+.membersGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.membersTasksContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.membersSplit {
+  display: flex;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.membersList {
+  width: 45%; /* left column takes 45% of available width */
+  max-height: 76vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-right: 1rem;
+  border-right: 1px solid rgba(255,255,255,0.04); /* divider */
+}
+
+.memberDetail {
+  flex: 1; /* right section takes remaining width (~55%) */
+  min-width: 0;
+  padding-left: 1.5rem;
+}
+
+.memberCard {
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, transparent 100%);
+}
+
+.memberCard.selected {
+  border: 1px solid #ff6b6b;
+  box-shadow: 0 8px 20px rgba(255,107,107,0.06);
+}
+
+.scrollableTasks {
+  max-height: 72vh;
+  overflow-y: auto;
+  padding: 0.5rem;
+}
+
+/* Task card improvements */
+.taskItem {
+  background: linear-gradient(135deg, #0f0f0f 0%, #0b0b0b 100%);
+  border-radius: 0.75rem;
+  margin: 0.5rem 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+.taskMeta {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #a0a0a0;
+}
+
+.priorityBadge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+.filterSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1a1a1a;
+  border: 1px solid #2d2d2d;
+  border-radius: 0.75rem;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.filterSection:hover {
+  border-color: #ff6b6b;
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.05) 0%, transparent 100%);
+}
+
+.filterLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #e0e0e0;
+  font-weight: 500;
+  pointer-events: none;
+}
+
+.filterLabel svg {
+  color: #ff6b6b;
+}
+
+.memberSection {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+  border: 1px solid #2d2d2d;
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.memberSection:hover {
+  border-color: #ff6b6b;
+  box-shadow: 0 8px 16px rgba(255, 107, 107, 0.15);
+}
+
+.memberHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  border-bottom: 1px solid #2d2d2d;
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.05) 0%, transparent 100%);
+}
+
+.memberInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.emptyState {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  color: #707070;
+}
+
+.emptyState svg {
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.memberCard {
+  background: var(--bg-card);
+  border: 1px solid #2d2d2d;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.memberCard:hover {
+  border-color: #ff6b6b;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.2);
+  transform: translateY(-2px);
+}
+
+.memberHeader {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: white;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.memberInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.memberDetails {
+  flex: 1;
+}
+
+.memberDetails h3 {
+  color: #ffffff;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+.statsRow {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.stat {
+  color: #a0a0a0;
+  font-size: 0.85rem;
+}
+
+.memberActions {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: 1rem;
+}
+
+.memberInfo h3 {
+  color: #ffffff;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+.memberEmail {
+  color: #a0a0a0;
+  font-size: 0.9rem;
+}
+
+.editForm {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.editForm input {
+  flex: 1;
+  padding: 0.5rem;
+  background: #0a0a0a;
+  border: 1px solid #ff6b35;
+  border-radius: 0.25rem;
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+.editForm input:focus {
+  outline: none;
+}
+
+.saveBtn {
+  padding: 0.5rem 0.75rem;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.saveBtn:hover {
+  background: #059669;
+}
+
+.memberStats {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(59, 130, 246, 0.05);
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.statLabel {
+  color: #a0a0a0;
+  font-size: 0.8rem;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.statValue {
+  color: #ff6b35;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.memberActions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.editBtn,
+.deleteBtn {
+  padding: 0.5rem;
+  border: 1px solid #3a3a3a;
+  background: transparent;
+  color: #e0e0e0;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.editBtn:hover {
+  background: rgba(255, 107, 107, 0.1);
+  border-color: #ff6b6b;
+  color: #ff6b6b;
+}
+
+.deleteBtn:hover {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.tasksSection {
+  margin-top: 3rem;
+}
+
+.tasksSection h2 {
+  color: #e0e0e0;
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.tasksList {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+  border: 1px solid #2d2d2d;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.tasksSection {
+  margin-top: 3rem;
+}
+
+.tasksSection h2 {
+  color: #e0e0e0;
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.tasksList {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.noTasks {
+  color: #707070;
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.taskItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 2rem;
+  border-bottom: 1px solid #2d2d2d;
+  transition: all 0.2s ease;
+}
+
+.taskItem:last-child {
+  border-bottom: none;
+}
+
+.taskItem:hover {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, transparent 100%);
+}
+
+.taskItem.completed {
+  opacity: 0.6;
+}
+
+.taskItem.needsAttention {
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.08) 0%, transparent 100%);
+  border-left: 3px solid #ff6b6b;
+}
+
+.checkbox {
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.checkbox:hover {
+  color: #10b981;
+}
+
+.taskContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.taskTitle {
+  color: #ffffff;
+  font-weight: 500;
+  margin: 0;
+  word-break: break-word;
+}
+
+.taskItem.completed .taskTitle {
+  text-decoration: line-through;
+  color: #a0a0a0;
+}
+
+.taskDescription {
+  color: #707070;
+  font-size: 0.85rem;
+  margin: 0.25rem 0 0;
+}
+
+.needsInputToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 0.5rem;
+  border: 1.5px solid #3a3a3a;
+  background: linear-gradient(135deg, transparent 0%, rgba(59, 130, 246, 0.02) 100%);
+  color: #e0e0e0;
+  cursor: pointer;
+  font-size: 1.3rem;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.needsInputToggle:hover {
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(255, 107, 107, 0.05) 100%);
+  border-color: #ff6b6b;
+  color: #ff6b6b;
+}
+
+.statusBadge {
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.priorityBadge {
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .addForm {
+    flex-direction: column;
+  }
+
+  .membersGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .memberStats {
+    grid-template-columns: 1fr;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+}
